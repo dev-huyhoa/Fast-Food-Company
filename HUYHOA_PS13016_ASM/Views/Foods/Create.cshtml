@@ -1,0 +1,60 @@
+﻿@model HUYHOA_PS13016_ASM.Models.Foods
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Foods</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FoodName" class="control-label"></label>
+                <input asp-for="FoodName" class="form-control" />
+                <span asp-validation-for="FoodName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryID" class="control-label"></label>
+                <select asp-for="CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodAmout" class="control-label"></label>
+                <input asp-for="FoodAmout" class="form-control" />
+                <span asp-validation-for="FoodAmout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodPrice" class="control-label"></label>
+                <input asp-for="FoodPrice" class="form-control" />
+                <span asp-validation-for="FoodPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+               @* <label asp-for="FoodImage" class="control-label"></label>
+                <input asp-for="FoodImage" class="form-control" />
+                <span asp-validation-for="FoodImage" class="text-danger"></span>*@
+                <label asp-for="FoodImage" class="text">Choose Image</label><br />
+                 <input asp-for="FoodImage" type="file" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

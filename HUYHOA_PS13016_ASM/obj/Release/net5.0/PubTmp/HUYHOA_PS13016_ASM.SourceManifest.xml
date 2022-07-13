@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\drive\Downloads\Hoc_litinh\HUYHOA_PS13016_ASM\HUYHOA_PS13016_ASM\obj\Release\net5.0\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\drive\Downloads\Hoc_litinh\HUYHOA_PS13016_ASM\HUYHOA_PS13016_ASM\obj\Release\net5.0\PubTmp\EFSQLScripts\HUYHOA_PS13016_ASM.Models.DataContext.sql" />
+</sitemanifest>

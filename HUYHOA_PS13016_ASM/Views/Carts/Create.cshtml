@@ -1,0 +1,75 @@
+﻿@model List<HUYHOA_PS13016_ASM.Models.Items>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="~/assets/css/StyleSheet.css">
+
+
+</head>
+<body>
+    <div class="card">
+      <div class="row">
+          <div class="col-md-8 cart">
+              <div class="title">
+                  <div class="row">
+                      <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                      <div class="col align-self-center text-right text-muted">@ViewBag.count Item</div>
+                  </div>
+              </div>    
+                @foreach(var item in Model)
+                {
+                       <div class="row">
+                       <div class="row main align-items-center">
+                      <div class="col-2"><img class="img-fluid" src="~/images/Food/@item.Foods.FoodImage"></div>
+                      <div class="col">
+                          <div class="row text-muted">@item.Foods.Category</div>
+                          <div class="row">@item.Foods.FoodName</div>
+                      </div>
+                      <div class="col">
+                          <a asp-controller="Carts" asp-action="subtract" asp-route-id="@item.Foods.FoodID">-</a><a href="#" class="border">@item.Quantity</a><a asp-controller="Carts" asp-action="add" asp-route-id="@item.Foods.FoodID">+</a>
+                      </div>
+                      <div class="col">@item.Foods.FoodPrice.ToString("#,##0") đ<a asp-controller="Carts" asp-action="Remove" asp-route-id="@item.Foods.FoodID"><span class="close">&#10005;</span></a></div>
+                  </div>
+              </div>
+                }
+              <div class="back-to-shop"><a href="/product/index">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+          </div>
+          <div class="col-md-4 summary">
+              <div><h5><b>Summary</b></h5></div>
+              <hr>
+              <div class="row" >
+                  <div class="col" style="padding-left:0;"></div>
+                  <div class="col text-right">@ViewBag.sum.ToString("#,##0") đ</div>
+              </div>
+              <form method="post" asp-controller="Carts" asp-action="Create">
+                  <p>SHIPPING</p>
+                
+                  <select><option class="text-muted">Standard-Delivery</option></select>
+                  <p>GIVE CODE</p>
+                  <input id="code" placeholder="Enter your code">
+              
+              <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                  <div class="col">TOTAL PRICE</div>
+                  <div class="col text-right">@ViewBag.sum.ToString("#,##0") đ</div>
+              </div>
+              <button type="submit" class="btn" asp-route-sum="@ViewBag.sum">CHECKOUT</button>
+              </form>
+          </div>
+
+      </div>
+    </div>
+  </body>
+</html>
+

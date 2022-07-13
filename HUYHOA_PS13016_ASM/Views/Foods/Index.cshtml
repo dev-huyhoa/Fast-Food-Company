@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HUYHOA_PS13016_ASM.Models.Foods>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Food</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodAmout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodAmout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodPrice)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.FoodImage)*@
+                <a asp-controller="Foods" asp-action="Details" asp-route-MaDm="@item.CategoryID" asp-route-id="@item.FoodID" class="img-fluid mt-4">
+                <img src="~/images/Food/@item.FoodImage" style="width: 80px ; height:80px; " />
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FoodID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FoodID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FoodID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
